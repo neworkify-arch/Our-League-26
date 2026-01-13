@@ -1,16 +1,13 @@
-const themes = ['theme-dark', 'theme-light', 'theme-blue', 'theme-green', 'theme-red', 'theme-purple', 'theme-orange', 'theme-cyber', 'theme-coffee', 'theme-ocean'];
-let themeIndex = 0;
+const themes = ['theme-dark', 'theme-light', 'theme-blue', 'theme-pink', 'theme-green', 'theme-orange', 'theme-purple', 'theme-ocean', 'theme-gold', 'theme-blood'];
+let curThemeIdx = parseInt(localStorage.getItem('ol_theme_idx')) || 0;
 
-function cycleTheme() {
-    document.body.classList.remove(themes[themeIndex]);
-    themeIndex = (themeIndex + 1) % themes.length;
-    document.body.classList.add(themes[themeIndex]);
-    localStorage.setItem('ol_theme', themeIndex);
+function applyTheme() {
+    document.body.className = themes[curThemeIdx];
 }
 
-// Load saved theme
-const savedTheme = localStorage.getItem('ol_theme');
-if (savedTheme) {
-    themeIndex = parseInt(savedTheme);
-    document.body.className = themes[themeIndex];
-}
+document.getElementById('themeBtn').onclick = () => {
+    curThemeIdx = (curThemeIdx + 1) % themes.length;
+    localStorage.setItem('ol_theme_idx', curThemeIdx);
+    applyTheme();
+};
+applyTheme();
