@@ -1,27 +1,19 @@
 {
-    "clubs": [
-        {
-            "name": "Qarabağ United",
-            "logo": "",
-            "currentBudget": 38250000,
-            "seasons": [
-                {
-                    "year": "2025/26"
-                },
-                {
-                    "year": "2026/27"
-                }
-            ]
-        },
-        {
-            "name": "Neftçi FC",
-            "logo": "",
-            "currentBudget": 21400000,
-            "seasons": [
-                {
-                    "year": "2025/26"
-                }
-            ]
-        }
-    ]
+  "meta": { "seasonYear": 2026, "seasonIndex": 1 },
+  "config": {
+    "localWin": 800000, "localDraw": 300000,
+    "groupWin": 2000000, "groupDraw": 900000,
+    "playoffWin": 1500000, "playoffDraw": 900000, "playoffBonus": 1000000,
+    "r16": 2300000, "qf": 2100000, "sf": 2050000, "final": 5000000
+  },
+  "clubs": [
+    {
+      "id": 1, "name": "Qarabağ", "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Qaraba%C4%9F_FK_logo.svg/1200px-Qaraba%C4%9F_FK_logo.svg.png",
+      "currentBudget": 20000000, "trophies": { "local": 0, "ucl": 0, "total": 0 }, "seasons": []
+    },
+    {
+      "id": 2, "name": "Neftçi", "logo": "https://upload.wikimedia.org/wikipedia/az/d/d9/Neft%C3%A7i_PFK_loqosu.png",
+      "currentBudget": 15000000, "trophies": { "local": 0, "ucl": 0, "total": 0 }, "seasons": []
+    }
+  ]
 }
