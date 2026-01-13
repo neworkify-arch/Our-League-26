@@ -1,57 +1,37 @@
 function calculateAll(commit = false) {
     const cfg = appData.config;
-
     appData.clubs.forEach((club, i) => {
-        // ID-lərə görə inputları tap
-        const getVal = (id) => parseFloat(document.getElementById(id).value) || 0;
+        const win = Number(document.getElementById(`win_${i}`).value) || 0;
+        const draw = Number(document.getElementById(`draw_${i}`).value) || 0;
+        const pos = Number(document.getElementById(`pos_${i}`).value) || 0;
+        
+        const gWin = Number(document.getElementById(`gwin_${i}`).value) || 0;
+        const gDraw = Number(document.getElementById(`gdraw_${i}`).value) || 0;
+        
+        const fScore = Number(document.getElementById(`fwin_${i}`).value) || 0;
+        const isChamp = document.getElementById(`fcheck_${i}`).checked;
 
-        // Yerli Liqa
-        const pos = getVal(`pos_${i}`);
-        const lIncome = (getVal(`win_${i}`) * cfg.localWin) + (getVal(`draw_${i}`) * cfg.localDraw);
+        let income = (win * cfg.localWin) + (draw * cfg.localDraw);
+        income += (gWin * cfg.groupWin) + (gDraw * cfg.groupDraw);
+        income += (fScore * cfg.final);
 
-        // ÇL
-        const gIncome = (getVal(`gwin_${i}`) * cfg.groupWin) + (getVal(`gdraw_${i}`) * cfg.groupDraw);
-        const pIncome = (getVal(`pwin_${i}`) * cfg.playoffWin) + (getVal(`pdraw_${i}`) * cfg.playoffDraw) + (getVal(`pbonus_${i}`) * cfg.playoffBonus);
+        const exp = (Number(document.getElementById(`exp_${i}`).value) || 0) * 1000000;
+        const net = income - exp;
 
-        // Finallar
-        const finalsIncome = (getVal(`r16_${i}`) * cfg.r16) + (getVal(`qf_${i}`) * cfg.qf) + (getVal(`sf_${i}`) * cfg.sf) + (getVal(`fwin_${i}`) * cfg.final);
-
-        // Xərc
-        const expense = getVal(`exp_${i}`) * cfg.expense;
-        const bonus = getVal(`bonus_${i}`) * 1.0; // 1M
-
-        const totalIncome = lIncome + gIncome + pIncome + finalsIncome + bonus;
-        const net = totalIncome - expense;
-        const newBudget = club.currentBudget + net;
-
-        // UI Update
         const statusEl = document.getElementById(`status_${i}`);
-        statusEl.innerHTML = `<span class="${net >= 0 ? 'positive' : 'negative'}">${net >= 0 ? '+' : ''}${(net / 1000000).toFixed(2)}M</span> | Yekun: ${(newBudget / 1000000).toFixed(2)}M`;
+        statusEl.innerHTML = `Status: ${(net/1000000).toFixed(1)}M | Yeni Büdcə: ${((club.currentBudget+net)/1000000).toFixed(1)}M`;
 
-        // Növbəti Sezona Keçid Məntiqi
-        if (commit) {
-            club.currentBudget = newBudget;
-
-            // Kubok Məntiqi
-            if (pos === 1) club.trophies.local++;
-            const fWin = getVal(`fwin_${i}`);
-            if (fWin >= 1) club.trophies.ucl++; // 1 qələbə finalda = kubok
-            club.trophies.total = club.trophies.local + club.trophies.ucl;
-
-            // Tarixçəyə yaz
-            club.seasons.push({
-                year: appData.meta.seasonYear,
-                pos: pos,
-                net: net,
-                trophyWon: (pos === 1 || fWin >= 1)
-            });
+        if(commit) {
+            club.currentBudget += net;
+            if(pos === 1) { club.trophies.local++; club.trophies.total++; }
+            if(isChamp) { club.trophies.ucl++; club.trophies.total++; }
+            club.seasons.push({ year: appData.meta.seasonYear, pos: pos, net: net });
         }
     });
 
-    if (commit) {
+    if(commit) {
         appData.meta.seasonYear++;
         appData.meta.seasonIndex++;
-        alert("Sezon Uğurla Tamamlandı!");
-        renderApp(); // Ekranı yenilə
+        renderApp();
     }
 }
