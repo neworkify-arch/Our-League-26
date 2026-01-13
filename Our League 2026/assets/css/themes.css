@@ -1,0 +1,89 @@
+:root {
+    --bg: #121212;
+    --panel: #1e1e1e;
+    --text: #fff;
+    --accent: #00d4ff;
+    --border: #333;
+}
+
+/* 1. Dark (Default) */
+.theme-dark {
+    --bg: #121212;
+    --panel: #1e1e1e;
+    --text: #e0e0e0;
+    --accent: #00d4ff;
+}
+
+/* 2. Light */
+.theme-light {
+    --bg: #f4f6f8;
+    --panel: #ffffff;
+    --text: #2c3e50;
+    --accent: #3498db;
+    --border: #ddd;
+}
+
+/* 3. Midnight Blue */
+.theme-blue {
+    --bg: #0f172a;
+    --panel: #1e293b;
+    --text: #f8fafc;
+    --accent: #38bdf8;
+}
+
+/* 4. Forest Green */
+.theme-green {
+    --bg: #052e16;
+    --panel: #064e3b;
+    --text: #d1fae5;
+    --accent: #34d399;
+}
+
+/* 5. Crimson Red */
+.theme-red {
+    --bg: #2b0a0a;
+    --panel: #4a1515;
+    --text: #ffe5e5;
+    --accent: #ff4d4d;
+}
+
+/* 6. Deep Purple */
+.theme-purple {
+    --bg: #1a0b2e;
+    --panel: #2d1b4e;
+    --text: #e9d5ff;
+    --accent: #a855f7;
+}
+
+/* 7. Sunset Orange */
+.theme-orange {
+    --bg: #2a1205;
+    --panel: #431407;
+    --text: #ffedd5;
+    --accent: #fb923c;
+}
+
+/* 8. Cyberpunk */
+.theme-cyber {
+    --bg: #000000;
+    --panel: #111111;
+    --text: #00ff00;
+    --accent: #ff00ff;
+    --border: #333;
+}
+
+/* 9. Coffee */
+.theme-coffee {
+    --bg: #28201a;
+    --panel: #3e3228;
+    --text: #d7ccc8;
+    --accent: #a1887f;
+}
+
+/* 10. Ocean */
+.theme-ocean {
+    --bg: #001f3f;
+    --panel: #003366;
+    --text: #b3e5fc;
+    --accent: #4fc3f7;
+}

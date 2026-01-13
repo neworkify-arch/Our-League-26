@@ -1,0 +1,27 @@
+{
+    "clubs": [
+        {
+            "name": "Qarabağ United",
+            "logo": "",
+            "currentBudget": 38250000,
+            "seasons": [
+                {
+                    "year": "2025/26"
+                },
+                {
+                    "year": "2026/27"
+                }
+            ]
+        },
+        {
+            "name": "Neftçi FC",
+            "logo": "",
+            "currentBudget": 21400000,
+            "seasons": [
+                {
+                    "year": "2025/26"
+                }
+            ]
+        }
+    ]
+}
